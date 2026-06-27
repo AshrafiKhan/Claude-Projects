@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rotating Gallery Hero | Claude Projects</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__logo">
+      <svg width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true">
+        <rect x="0" y="0" width="22" height="5" rx="1" fill="#0a0a0a"/>
+        <rect x="0" y="0" width="5" height="28" rx="1" fill="#0a0a0a"/>
+        <rect x="0" y="12" width="16" height="5" rx="1" fill="#0a0a0a"/>
+      </svg>
+    </div>
+    <ul class="navbar__links">
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Index</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+    <a href="#" class="navbar__cta">Book a meeting</a>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero__headline">Bespoke Architecture Studio</h1>
+    <p class="hero__subtitle">The building you deserve has never been built before.</p>
+  </section>
+
+  <div class="gallery-strip" aria-label="Architecture image gallery">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+      <div class="gallery-card"></div>
+    </div>
+  </div>
+
+  <section class="footer-copy">
+    <p class="footer-copy__description">
+      We design private residences and commercial spaces from a blank page.
+      No templates, no repeated floorplans, no shortcuts.
+    </p>
+    <div class="footer-copy__actions">
+      <a href="#" class="action-link">Book a meeting</a>
+      <a href="#" class="action-link">See Projects</a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
