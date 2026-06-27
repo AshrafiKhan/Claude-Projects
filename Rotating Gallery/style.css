@@ -25,7 +25,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ── NAVBAR ── */
+/* NAVBAR */
 
 .navbar {
   display: grid;
@@ -74,7 +74,7 @@ html, body {
   opacity: 0.75;
 }
 
-/* ── HERO TEXT ── */
+/* HERO TEXT */
 
 .hero {
   text-align: center;
@@ -99,7 +99,7 @@ html, body {
   line-height: 1.65;
 }
 
-/* ── GALLERY STRIP ── */
+/* GALLERY STRIP */
 
 .gallery-strip {
   overflow: hidden;
@@ -145,7 +145,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Architectural warm-neutral gradient palette */
 .gallery-card:nth-child(8n+1) { background: linear-gradient(155deg, #c9c2b8 0%, #8b8278 100%); }
 .gallery-card:nth-child(8n+2) { background: linear-gradient(155deg, #b8c4c0 0%, #7a9490 100%); }
 .gallery-card:nth-child(8n+3) { background: linear-gradient(155deg, #cec8be 0%, #948e84 100%); }
@@ -162,7 +161,7 @@ html, body {
   display: block;
 }
 
-/* ── FOOTER COPY ── */
+/* FOOTER COPY */
 
 .footer-copy {
   padding: 0 2.5rem 4.5rem;
