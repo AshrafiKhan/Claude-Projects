@@ -1,0 +1,335 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text-dim: #666;
+  --accent: #7c6fcd;
+  --accent-glow: rgba(124, 111, 205, 0.25);
+  --correct: #2d7a4f;
+  --wrong: #7a2d2d;
+  --sans: system-ui, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Game Shell ---- */
+.game-shell {
+  width: 100%;
+  max-width: 520px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 24px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 12px;
+}
+
+.game-title {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.streak-display {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.game-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.reset-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.reset-btn:hover { color: var(--text); }
+
+/* ---- XP Bar ---- */
+.xp-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.xp-bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.xp-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* ---- Challenge Card ---- */
+.challenge-card {
+  width: 100%;
+  max-width: 480px;
+}
+
+.challenge-type-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.challenge-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.challenge-content.feedback-correct { border-color: var(--correct); }
+.challenge-content.feedback-wrong { border-color: var(--wrong); }
+
+@keyframes flash {
+  0% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+.challenge-content.feedback-correct::after,
+.challenge-content.feedback-wrong::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  animation: flash 0.5s ease forwards;
+}
+
+.challenge-content.feedback-correct::after { background: var(--correct); }
+.challenge-content.feedback-wrong::after { background: var(--wrong); }
+
+/* ---- Challenge body ---- */
+.challenge-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.challenge-question {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.challenge-label {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ---- Options grid ---- */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.option-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 18px;
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.option-btn:hover {
+  border-color: var(--accent);
+  transform: scale(1.02);
+}
+
+.option-btn:active { transform: scale(0.98); }
+
+/* ---- Text input form ---- */
+.text-input-form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.text-answer {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 20px;
+  padding: 10px 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.text-answer:focus { border-color: var(--accent); }
+
+/* hide number input spinners */
+.text-answer[type=number]::-webkit-inner-spin-button,
+.text-answer[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+.submit-btn {
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.submit-btn:hover { opacity: 0.85; }
+
+/* ---- Pattern sequence ---- */
+.pattern-sequence {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pattern-item {
+  font-size: 24px;
+  font-weight: 300;
+  min-width: 36px;
+  text-align: center;
+}
+
+.pattern-gap {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+/* ---- Memory grid ---- */
+.memory-grid {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.memory-cell {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.memory-cell-lit {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.memory-cell-recall { cursor: pointer; }
+
+.memory-cell-recall:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.memory-cell-selected {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- Word challenge ---- */
+.word-scrambled {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--text);
+}
+
+.word-hint {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ---- Unlock message ---- */
+.unlock-msg {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 0;
+}
+
+.unlock-icon {
+  font-size: 48px;
+}
+
+.unlock-msg div:last-child {
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.loading {
+  color: var(--text-dim);
+  font-size: 14px;
+}
